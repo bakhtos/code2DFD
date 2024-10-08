@@ -21,9 +21,13 @@ repo_cache = dict()
 exception_counter_repo = 0
 
 
-def get_output_path(repo_path: str) -> str:
+def get_output_path(repo_path: str, commit: str = None) -> str:
     repo_path = repo_path.replace("/", "--")
-    return os.path.join(os.getcwd(), 'code2dfd_output', repo_path)
+    if commit is None:
+        return os.path.join(os.getcwd(), 'code2dfd_output', repo_path)
+    else:
+        return os.path.join(os.getcwd(), 'code2dfd_output', repo_path, commit)
+
 
 
 def get_local_path(repo_path: str) -> str:
